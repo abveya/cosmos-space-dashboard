@@ -41,6 +41,8 @@ let showResolution = document.getElementById("show-full-resolution");
 let dateInput = document.getElementById("apod-date-input");
 let dateDispay = document.getElementById("date-display");
 let loadBtn = document.getElementById("load-date-btn");
+let launchesCount = document.getElementById("launches-count");
+let launchesCountMobile =  document.getElementById("launches-count-mobile")
 const API_KEY = 'DmQgC6MCQfgFJ7czbnRJPbBDMtwd8N7kp7hpggJN';
 
 
@@ -106,9 +108,13 @@ async function getLaunches() {
         launches = data.results;
         displayStaticLaunches();
         displayLaunches()
+        launchesCount.innerHTML = launches.length +" Launches";
+        launchesCountMobile.innerHTML = launches.length;
     } catch (error) {
         console.log(error)
         document.getElementById("featured-launch").innerHTML = `<p class="w-full flex justify-center" style="font-size:17px;">Please try again...</p>`
+        launchesCount.innerHTML = 0 +" Launches";
+        launchesCountMobile.innerHTML = 0;
     }
 }
 
